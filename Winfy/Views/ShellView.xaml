@@ -9,9 +9,10 @@
 			 xmlns:wi="clr-namespace:Winfy.Interactivity"
 			 xmlns:ctrl="clr-namespace:Winfy.Controls"
 			 mc:Ignorable="d" 
-			 MinHeight="{Binding ApplicationSize, Converter={StaticResource ApplicationSizeConverter}}"
-			 MinWidth="{Binding ApplicationSize, Converter={StaticResource ApplicationSizeConverter}}"
-			 MaxWidth="{Binding ApplicationSize, Converter={StaticResource ApplicationSizeConverter}}"
+			 MinHeight="64"
+             MaxHeight="64"
+			 MinWidth="300"
+			 MaxWidth="300"
 			 Padding="0"
 			 Background="#000000" FontFamily="Segoe UI"
 			 Foreground="#FFFFFF" BorderBrush="#000000">
@@ -79,57 +80,42 @@
 			</ContextMenu>
 		</Border.ContextMenu>
 		<Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="64" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="{Binding ApplicationSize, Converter={StaticResource ApplicationSizeConverter}}" />
-				<RowDefinition Height="Auto" />
-				<RowDefinition Height="Auto" />
-			</Grid.RowDefinitions>
-			
-			<Border Grid.Row="0" Background="#000000">
-				<Border BorderBrush="{x:Null}" BorderThickness="0" Padding="0" Name="CoverDisplay" MinWidth="{Binding ApplicationSize, Converter={StaticResource ApplicationSizeConverter}}">
-					<Border.Background>
-						<ImageBrush ImageSource="{Binding CoverImage}"/>
-					</Border.Background>
-					<Border>
-						<Border.Background><ImageBrush ImageSource="/Images/cover.png"></ImageBrush></Border.Background>
-						<Grid>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="Auto" />
-								<ColumnDefinition Width="*" />
-							</Grid.ColumnDefinitions>
-							<Grid.RowDefinitions>
-							   <RowDefinition Height="*" /> 
-								<RowDefinition Height="Auto" />
-							</Grid.RowDefinitions>
-							<StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Name="PlayerButtons" Opacity="0">
-								<ctrl:ImageButton Width="24" Height="25" x:Name="PlayPrevious"
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Image Source="{Binding CoverImage}" Height="64" Width="64"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="5" Visibility="{Binding HasTrackInformation, Converter={StaticResource VisibilityConverter}}">
+				<TextBlock Name="CurrentTrack" FontSize="14" FontWeight="Light" TextWrapping="WrapWithOverflow" />
+                <TextBlock Name="CurrentArtist" FontWeight="Bold" TextWrapping="WrapWithOverflow" FontSize="12" />
+			</StackPanel>
+            
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Name="PlayerButtons" Opacity="0">
+                <ctrl:ImageButton Width="24" Height="25" x:Name="PlayPrevious"
 												  ImageSourceNormal="/Images/Player/prev-normal.png"
 												  ImageSource="/Images/Player/prev-normal.png"
 												  ImageSourcePressed="/Images/Player/prev-pressed.png"
 												  ToolTip="plays the previous track" />
-								<ctrl:ImageButton Width="33" Height="33" x:Name="PlayPause"
+                <ctrl:ImageButton Width="33" Height="33" x:Name="PlayPause"
 												  ImageSourceNormal="/Images/Player/play-pause-normal.png"
 												  ImageSource="/Images/Player/play-pause-normal.png"
 												  ImageSourcePressed="/Images/Player/play-pause-pressed.png"
 												  ToolTip="Toggle playback"/>
-								<ctrl:ImageButton Width="24" Height="25" x:Name="PlayNext"
+                <ctrl:ImageButton Width="24" Height="25" x:Name="PlayNext"
 												  ImageSourceNormal="/Images/Player/next-normal.png"
 												  ImageSource="/Images/Player/next-normal.png"
 												  ImageSourcePressed="/Images/Player/next-pressed.png"
 												  ToolTip="plays the next track" />
-							</StackPanel>
-						</Grid>
-					</Border>
-				</Border>
-			</Border>
-			
-			<StackPanel Grid.Row="1" Margin="5" Visibility="{Binding HasTrackInformation, Converter={StaticResource VisibilityConverter}}">
-				<TextBlock Name="CurrentTrack" FontSize="16" FontWeight="Light" TextWrapping="WrapWithOverflow" />
-				<TextBlock Name="CurrentArtist" TextWrapping="WrapWithOverflow" FontSize="12" />
-			</StackPanel>
-			
-		</Grid>
+            </StackPanel>
+
+        </Grid>
 	</Border>
 	
 </UserControl>

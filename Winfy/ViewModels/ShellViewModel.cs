@@ -22,6 +22,7 @@ namespace Winfy.ViewModels {
 		private readonly AppSettings _Settings;
 		private readonly Core.ILog _Logger;
 		private const string NoCoverUri = @"pack://application:,,,/Winfy;component/Images/LogoWhite.png";
+        private const string BlankCoverUri = @"pack://application:,,,/Winfy;component/Images/LogoBlank.png";
 		private const string UnknownCoverUri = @"pack://application:,,,/Winfy;component/Images/LogoUnknown.png";
 
 		public event EventHandler<ToggleVisibilityEventArgs> ToggleVisibility;
@@ -181,7 +182,8 @@ namespace Winfy.ViewModels {
 				CanPlayPrevious = _SpotifyController.IsSpotifyOpen();
 				CanPlayNext = _SpotifyController.IsSpotifyOpen();
 
-				if (_SpotifyController.IsSpotifyOpen() && !string.IsNullOrEmpty(track) && !string.IsNullOrEmpty(artist)) {
+                if (_SpotifyController.IsSpotifyOpen() && !string.IsNullOrEmpty(track) && !string.IsNullOrEmpty(artist))
+                {
 					if(_Settings.DisableAnimations)
 						CoverImage = NoCoverUri; //Reset cover image, no cover is better than an old one
 
@@ -200,6 +202,7 @@ namespace Winfy.ViewModels {
 					if(fade)
 						OnCoverDisplayFadeIn();
 				}
+
 			}
 			catch (Exception exc) {
 				_Logger.FatalException("UpdateView() failed hard", exc);
