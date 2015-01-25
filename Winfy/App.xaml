@@ -10,10 +10,9 @@
 				<ResourceDictionary>
 					<local:AppBootstrapper x:Key="bootstrapper" />
 					<c:VisibilityConverter x:Key="VisibilityConverter" />
-					<c:ApplicationSizeConverter x:Key="ApplicationSizeConverter" />
-                    <c:ApplicationSizeConverterWidth x:Key="ApplicationSizeConverterWidth" />
-					
-					<Style TargetType="{x:Type Window}">
+                    <c:ApplicationSizeConverter x:Key="ApplicationSizeConverter" />
+
+                    <Style TargetType="{x:Type Window}">
 						<Setter Property="TextOptions.TextFormattingMode" Value="Display"></Setter>
 					</Style>
 					

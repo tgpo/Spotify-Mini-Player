@@ -9,10 +9,8 @@
 			 xmlns:wi="clr-namespace:Winfy.Interactivity"
 			 xmlns:ctrl="clr-namespace:Winfy.Controls"
 			 mc:Ignorable="d" 
-			 MinHeight="64"
-             MaxHeight="64"
-			 MinWidth="300"
-			 MaxWidth="300"
+			 Height="64"
+			 Width="300"
 			 Padding="0"
 			 Background="#000000" FontFamily="Segoe UI"
 			 Foreground="#FFFFFF" BorderBrush="#000000">

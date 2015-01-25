@@ -2,7 +2,6 @@
 	public enum ApplicationSize {
 		Large,
 		Medium,
-		Small,
-        Mini
+		Small
 	}
 }
