@@ -1,9 +1,7 @@
-Winfy
+Winfy - Spotify Mini Mode Player
 =====
 
-:warning: **Due to the switch to Mac OSX Winfy development is currently on hold. Sorry folks** :warning:
-
-Winfy is a WPF-Based mini player for Spotify on Windows.
+Winfy - Spotify Mini Mode Player is a WPF-Based mini player for Spotify on Windows.
 
 ![Winfy](http://f.cl.ly/items/1f0N2K2z1K2Y3L042C3G/Winfy.png)
 
