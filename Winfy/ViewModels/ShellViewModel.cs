@@ -17,7 +17,6 @@ namespace Winfy.ViewModels {
 		private readonly ICoverService _CoverService;
 		private readonly IEventAggregator _EventAggregator;
 		private readonly IUpdateService _UpdateService;
-		private readonly IUsageTrackerService _UsageTrackerService;
 		private readonly IBroadcastService _BroadcastService;
 		private readonly AppSettings _Settings;
 		private readonly Core.ILog _Logger;
@@ -29,7 +28,7 @@ namespace Winfy.ViewModels {
 		public event EventHandler CoverDisplayFadeOut;
 		public event EventHandler CoverDisplayFadeIn;
 		
-		public ShellViewModel(IWindowManager windowManager, ISpotifyController spotifyController, ICoverService coverService, IEventAggregator eventAggregator, AppSettings settings, Core.ILog logger, IUpdateService updateService, IUsageTrackerService usageTrackerService, IBroadcastService broadcastService) {
+		public ShellViewModel(IWindowManager windowManager, ISpotifyController spotifyController, ICoverService coverService, IEventAggregator eventAggregator, AppSettings settings, Core.ILog logger, IUpdateService updateService, IBroadcastService broadcastService) {
 			_WindowManager = windowManager;
 			_SpotifyController = spotifyController;
 			_CoverService = coverService;
@@ -37,7 +36,6 @@ namespace Winfy.ViewModels {
 			_Settings = settings;
 			_Logger = logger;
 			_UpdateService = updateService;
-			_UsageTrackerService = usageTrackerService;
 			_BroadcastService = broadcastService;
 			_ApplicationSize = _Settings.ApplicationSize;
 
@@ -49,7 +47,6 @@ namespace Winfy.ViewModels {
 			_SpotifyController.SpotifyExited += (o, e) => SpotifyExited();
 			_UpdateService.UpdateReady += UpdateReady;
 			_UpdateService.StartBackgroundCheck();
-			_UsageTrackerService.Track();
 
 			_BroadcastService.BroadcastMessageReceived += BroadcastMessageReceived;
 			_BroadcastService.StartListening();

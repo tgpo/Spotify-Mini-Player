@@ -47,9 +47,6 @@ namespace Winfy {
             Container.Register<ICoverService>(new CoverService(_Contracts, Container.Resolve<Core.ILog>(), Container.Resolve<SpotifyLocalApi>()));
             
             Container.Register<IUpdateService>(new UpdateService(Container.Resolve<Core.ILog>()));
-            Container.Register<IUsageTrackerService>(ApplicationDeployment.IsNetworkDeployed
-                                                         ? new UsageTrackerService(_Settings, Container.Resolve<Core.ILog>(), _Contracts)
-                                                         : new LocalUsageTrackerService(_Settings, Container.Resolve<Core.ILog>(), _Contracts));
         }
 
         protected override void OnExit(object sender, EventArgs e) {
